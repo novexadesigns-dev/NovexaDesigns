@@ -1,42 +1,292 @@
-<!DOCTYPE html>
+<!-- START OF NOVEXA single-file site -->
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NOVEXA — Ultra Premium Creative Agency</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NOVEXA — Immersive Digital Experience Studio</title>
+<style>
+:root{
+  --bg:#050505;--panel:rgba(255,255,255,0.03);--text:#EAF7FF;--muted:#A6B0C0;
+  --accent1:#00C8FF;--accent2:#5B2FFD;--transition:350ms cubic-bezier(.16,.8,.24,1);
+  --max-width:1200px;
+}
+html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial;-webkit-font-smoothing:antialiased}
+#novexa-app{min-height:100vh;}
 
-    <!-- TEMP STYLE (we will replace with global.css later) -->
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .hero {
-            padding: 130px 20px;
-        }
-        .hero h1 {
-            font-size: 38px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 20px;
-            opacity: 0.8;
-        }
-    </style>
+/* Header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999;background:linear-gradient(180deg, rgba(2,6,11,0.6), rgba(2,6,11,0.15));backdrop-filter: blur(6px);padding:12px 20px;}
+.header-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+#novexa-logo{width:140px;height:auto;display:block;transition:filter var(--transition), transform var(--transition);}
+.nav-links{display:flex;gap:18px;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
+
+/* Sections */
+.novexa-section{min-height:80vh;padding:112px 20px 80px;display:flex;align-items:center;position:relative;}
+.container{max-width:var(--max-width);margin:0 auto;width:100%;}
+.novexa-hero{min-height:92vh;display:flex;align-items:center;}
+.hero-stage{display:flex;gap:28px;align-items:center;}
+.hero-left{flex:1;}
+.hero-right{flex:1;display:flex;justify-content:center;align-items:center}
+
+/* Hero text */
+.kicker{color:var(--muted);font-weight:600;margin-bottom:10px}
+.hero-title{font-size:48px;line-height:1.02;margin:0 0 12px;font-weight:800;letter-spacing:-0.02em}
+.hero-sub{color:var(--muted);margin:0 0 20px;font-size:18px}
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041017;box-shadow:0 10px 30px rgba(91,47,253,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:11px 18px;border-radius:12px}
+
+/* Packages */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px}
+.pkg{background:var(--panel);padding:22px;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(0,0,0,0.6);transition:transform var(--transition)}
+.pkg:hover{transform:translateY(-8px)}
+.pkg h4{margin:0 0 6px;font-size:16px}
+
+/* Modal */
+#novexa-modal{display:none;position:fixed;inset:0;background:rgba(2,6,11,0.75);z-index:2200;align-items:center;justify-content:center}
+.modal-card{background:#061018;padding:20px;border-radius:12px;max-width:720px;width:94%}
+
+/* logos switching helpers */
+.use-white { filter: none; }
+.use-black svg * { fill: #000 !important; }
+
+/* theme specific helpers (can be extended) */
+body[data-theme="neon"]{ --accent1:#00E7FF; --accent2:#5CF1FF; background:linear-gradient(180deg,#02030a,#050515) }
+body[data-theme="light"]{ background:#F6F7FB; color:#07101a }
+body[data-theme="desert"]{ background:linear-gradient(180deg,#0e0b06,#1b140d) }
+body[data-theme="space"]{ background:linear-gradient(180deg,#030617,#0b1220) }
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-title{font-size:28px}
+  #novexa-logo{width:110px}
+  .hero-stage{flex-direction:column-reverse;gap:20px}
+  .novexa-section{padding:48px 12px}
+}
+</style>
+
 </head>
-
 <body>
+<div id="novexa-app">
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div id="novexa-logo" class="use-white" aria-hidden="false">
+        <svg width="220" height="40" viewBox="0 0 440 80" xmlns="http://www.w3.org/2000/svg" aria-label="NOVEXA logo">
+          <g fill="#FFFFFF" transform="translate(0,0)">
+            <text x="90" y="50" font-family="Space Grotesk, Arial" font-size="36" font-weight="700">NOVEXA</text>
+            <path d="M18 20 L40 4 L28 28 L46 28 L24 60 Z" fill="#FFFFFF" transform="translate(0,0)"/>
+          </g>
+        </svg>
+      </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>WE BUILD BRANDS THAT FEEL UNTOUCHABLE</h1>
-        <p>The ultra-premium, psychological, cinematic identity for future-driven businesses.</p>
+      <nav class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#case-studies">Work</a>
+        <a href="#contact">Contact</a>
+        <button class="btn-primary" id="openModalTop">Secure Your Slot</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="novexa-section novexa-hero" data-theme="neon" id="home">
+      <div class="container">
+        <div class="hero-stage">
+          <div class="hero-left">
+            <div class="kicker">NOVEXA — Immersive Digital Experience Studio</div>
+            <h1 class="hero-title">Where websites stop being pages — and start being alive.</h1>
+            <p class="hero-sub">Cinematic, theme-shifting worlds engineered for attention, trust, and conversion.</p>
+            <div style="display:flex;gap:12px;align-items:center">
+              <a class="btn btn-primary" href="mailto:novexa.designs@gmail.com?subject=Start%20Project%20-%20NOVEXA">Start Your Project</a>
+              <button class="btn btn-outline" id="scrollToPackages">View Packages</button>
+            </div>
+            <p style="margin-top:12px;color:var(--muted)">Opening Launch — 10 exclusive slots.</p>
+          </div>
+
+          <div class="hero-right">
+            <img id="hero-img" src="ASSET_HERO" alt="hero visual" style="max-width:520px;border-radius:12px;box-shadow:0 30px 70px rgba(0,0,0,0.7)" />
+          </div>
+        </div>
+      </div>
     </section>
 
+    <section class="novexa-section" data-theme="desert">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Adaptive Worlds</h2>
+        <p style="color:var(--muted)">Every scroll changes the environment: from neon cities to desert biomes to starfields. Our adaptive logo and UI ensures nothing ever looks out of place.</p>
+      </div>
+    </section>
+
+    <section class="novexa-section" data-theme="space">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Cinematic Motion</h2>
+        <p style="color:var(--muted)">We choreograph motion like film directors — timing, anticipation, and release — to create real emotional drives that convert.</p>
+      </div>
+    </section>
+
+    <section class="novexa-section" data-theme="jungle">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Brand Ecosystems</h2>
+        <p style="color:var(--muted)">Design that breathes — interfaces that adapt to user intent. Your brand will feel alive across every device.</p>
+      </div>
+    </section>
+
+    <section class="novexa-section" id="packages" data-theme="light">
+      <div class="container">
+        <h2 style="margin:0 0 10px;color:#041017">Choose Your Growth Blueprint</h2>
+        <p style="color:#7a8088;margin-bottom:20px">Limited launch pricing — 10 slots only.</p>
+
+        <div class="pricing-grid">
+          <div class="pkg">
+            <h4>NOVEXA LITE EXPERIENCE</h4>
+            <div style="margin:8px 0;color:var(--muted)">$450 • cinematic starter</div>
+            <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted)">
+              <li>3-section high-impact site</li>
+              <li>Adaptive hero + CTA funnel</li>
+              <li>1 round of revisions</li>
+            </ul>
+            <div style="margin-top:14px"><a class="btn btn-primary select-btn" data-pkg="NOVEXA LITE" href="#">Secure Your Slot</a></div>
+          </div>
+
+          <div class="pkg">
+            <h4>COMMERCE PRO</h4>
+            <div style="margin:8px 0;color:var(--muted)">$1,200 • store-ready</div>
+            <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted)">
+              <li>Full Shopify template</li>
+              <li>Product import guide & setup</li>
+              <li>Premium UX + checkout funnel</li>
+            </ul>
+            <div style="margin-top:14px"><a class="btn btn-primary select-btn" data-pkg="COMMERCE PRO" href="#">Secure Your Slot</a></div>
+          </div>
+
+          <div class="pkg">
+            <h4>BRAND EMPIRE</h4>
+            <div style="margin:8px 0;color:var(--muted)">$2,500 • full identity</div>
+            <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted)">
+              <li>Brand system + assets</li>
+              <li>Website + case study</li>
+              <li>Marketing kickoff bundle</li>
+            </ul>
+            <div style="margin-top:14px"><a class="btn btn-primary select-btn" data-pkg="BRAND EMPIRE" href="#">Secure Your Slot</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="novexa-section" id="contact" data-theme="neon">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Ready to Build?</h2>
+        <p style="color:var(--muted)">Send a quick message or secure your slot and we’ll start the intake.</p>
+        <div style="margin-top:16px">
+          <a class="btn btn-primary" href="mailto:novexa.designs@gmail.com?subject=Contact%20-%20NOVEXA">Email Us</a>
+          <a class="btn btn-outline" href="https://wa.me/92XXXXXXXXXX?text=I%20want%20to%20start%20my%20project%20with%20NOVEXA">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="novexa-section" data-theme="space" style="padding:40px 20px;">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div>NOVEXA™ — Future-Built Digital Experiences</div>
+          <div style="color:var(--muted)">© NOVEXA 2025</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- Modal / Intake (simple mailto fallback) -->
+<div id="novexa-modal" aria-hidden="true">
+  <div class="modal-card">
+    <h3 style="margin-top:0">Quick Project Intake</h3>
+    <form id="novexa-intake">
+      <input name="brand" placeholder="Brand / Project name" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#011118;color:var(--text)" required>
+      <input name="goal" placeholder="Main goal (sales, trust, launch)" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#011118;color:var(--text)" required>
+      <input name="website" placeholder="Current website (if any)" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#011118;color:var(--text)">
+      <input name="contact" placeholder="WhatsApp / Phone" style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;background:#011118;color:var(--text)" required>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" id="novexa-close" class="btn btn-outline">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ---------- Theme & Logo Controller ---------- */
+function applyTheme(theme){
+  document.body.dataset.theme = theme;
+  const logo = document.getElementById('novexa-logo');
+  if(!logo) return;
+  const useBlack = (theme === 'light' || theme === 'desert');
+  if(useBlack){ logo.classList.remove('use-white'); logo.classList.add('use-black'); }
+  else { logo.classList.remove('use-black'); logo.classList.add('use-white'); }
+}
+window.applyTheme = applyTheme;
+
+/* IntersectionObserver to detect active section (45% visible) */
+(function(){
+  const sections = document.querySelectorAll('[data-theme]');
+  if(!sections.length) return;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const t = e.target.getAttribute('data-theme') || 'neon';
+        if(window.applyTheme) window.applyTheme(t);
+      }
+    });
+  }, {threshold:0.45});
+  sections.forEach(s=>obs.observe(s));
+})();
+
+/* Modal handling and intake -> mailto fallback */
+document.getElementById('openModalTop').addEventListener('click', ()=> { openModal(); });
+document.querySelectorAll('.select-btn').forEach(b=>{
+  b.addEventListener('click', (ev)=>{ ev.preventDefault(); openModal(b.dataset.pkg); });
+});
+function openModal(pkg){
+  const modal = document.getElementById('novexa-modal');
+  modal.style.display='flex';
+  modal.setAttribute('aria-hidden','false');
+  if(pkg){
+    const el = document.querySelector('#novexa-intake input[name="goal"]');
+    if(el) el.value = pkg;
+  }
+}
+document.getElementById('novexa-close').addEventListener('click', ()=> {
+  const modal = document.getElementById('novexa-modal');
+  modal.style.display='none';
+  modal.setAttribute('aria-hidden','true');
+});
+
+/* intake submit - mailto */
+document.getElementById('novexa-intake').addEventListener('submit', function(e){
+  e.preventDefault();
+  const fm = new FormData(this);
+  const body = encodeURIComponent(
+    `Brand/Project: ${fm.get('brand')}\nMain goal: ${fm.get('goal')}\nWebsite: ${fm.get('website')}\nContact: ${fm.get('contact')}`
+  );
+  const mail = `mailto:novexa.designs@gmail.com?subject=NOVEXA%20Intake&body=${body}`;
+  window.location.href = mail;
+});
+
+/* Scroll helper for "View Packages" */
+document.getElementById('scrollToPackages').addEventListener('click', ()=> {
+  const el = document.getElementById('packages');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+/* small safety: replace placeholder asset URLs automatically if empty */
+(function(){
+  const hero = document.getElementById('hero-img');
+  if(hero && hero.src.includes('ASSET_HERO')) {
+    hero.src = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#07101a"/><text x="50%" y="50%" font-size="28" fill="#a7f2ff" text-anchor="middle">NOVEXA HERO — Replace ASSET_HERO</text></svg>');
+  }
+})();
+</script>
 </body>
 </html>
+<!-- END OF NOVEXA single-file site -->
